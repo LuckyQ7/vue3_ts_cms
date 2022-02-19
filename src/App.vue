@@ -1,8 +1,4 @@
 <template>
-  <router-link to="/login">登录</router-link>
-  <router-link to="/main">首页</router-link>
-  <el-button type="warning">Primary</el-button>
-
   <router-view v-slot="props">
     <el-config-provider :locale="locale">
       <component :is="props.Component"></component>

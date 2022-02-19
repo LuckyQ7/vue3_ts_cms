@@ -1,26 +1,32 @@
 <template>
-  <el-time-picker
-    v-model="value1"
-    is-range
-    range-separator="至"
-    start-placeholder="开始时间"
-    end-placeholder="结束时间"
-  >
-  </el-time-picker>
+  <div class="login">
+    <login-panel-vue></login-panel-vue>
+  </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from 'vue'
-
+import { defineComponent } from 'vue'
+import loginPanelVue from './components/login-panel.vue'
 export default defineComponent({
   name: 'Login',
+  components: { loginPanelVue },
   setup() {
-    const value1 = ref('')
-    return {
-      value1
-    }
+    return {}
   }
 })
 </script>
 
-<style lang="less"></style>
+<style lang="less">
+.app {
+  display: flex;
+  align-items: center;
+}
+.login {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  width: 100%;
+  height: 100%;
+  background: url('../../assets/img/login-bg.svg');
+}
+</style>

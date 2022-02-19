@@ -1,6 +1,6 @@
 import HYRequest from './request'
 import { BASE_URL } from './request/config'
-
+import cache from '@/utils/cache'
 /*
   1.可以创建多个实例
   2.每个实例都有自己的拦截器
@@ -11,12 +11,14 @@ export default new HYRequest({
   timeout: 1000 * 60 * 3,
   interceptors: {
     requestInterceptors: (config) => {
-      console.log('ok')
+      const token = cache.getCache('token')
+      if (token) {
+        config!.headers!.Authorization = 'Bearer ' + token
+      }
       return config
     },
     requestInterceptorsCatch: (err) => err,
     responseInterceptors: (config) => {
-      console.log('ok')
       return config
     },
     responseInterceptorsCatch: (err) => err
